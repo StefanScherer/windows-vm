@@ -5,4 +5,4 @@ CHECKSUM=beed231a34e90e1dd9a04b3afabec31d62ce3889
 if [ ! -d box/vmware ]; then
   mkdir -p box/vmware
 fi
-packer build --only=vmware-iso -var "iso_url=$ISO" -var "iso_checksum=$CHECKSUM" win2008r2-datacenter-cygwin.json | addtime
+packer build --only=vmware-iso -var "cm=nocm" -var "iso_url=$ISO" -var "iso_checksum=$CHECKSUM" win2008r2-datacenter-cygwin.json | addtime

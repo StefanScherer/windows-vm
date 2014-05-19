@@ -5,4 +5,4 @@ CHECKSUM=beed231a34e90e1dd9a04b3afabec31d62ce3889
 if [ ! -d box/virtualbox ]; then
   mkdir -p box/virtualbox
 fi
-packer build --only=virtualbox-iso -var "iso_url=$ISO" -var "iso_checksum=$CHECKSUM" win2008r2-datacenter-cygwin.json | addtime
+packer build --only=virtualbox-iso -var "cm=nocm" -var "iso_url=$ISO" -var "iso_checksum=$CHECKSUM" win2008r2-datacenter-cygwin.json | addtime
