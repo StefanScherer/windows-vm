@@ -14,8 +14,16 @@ if not errorlevel 1 set CYGWIN_ARCH=x86_64
 set CYGWIN_SETUP_URL=http://cygwin.com/setup-%CYGWIN_ARCH%.exe
 set CYGWIN_SETUP_LOCAL_PATH=%TEMP%\setup-%CYGWIN_ARCH%.exe
 set CYGWIN_HOME=%SystemDrive%\cygwin
-set CYGWIN_PACKAGES=openssh rsync
+set CYGWIN_PACKAGES=openssh,rsync,wget,curl,git,tar,gzip,bzip2,vim
 set CYGWIN_MIRROR_URL=http://mirrors.kernel.org/sourceware/cygwin
+
+:: create synced folder
+if not exist %CYGWIN_HOME%\vagrant mkdir %CYGWIN_HOME%\vagrant
+if not exist %SystemDrive%\vagrant mklink %SystemDrive%\vagrant %CYGWIN_HOME%\vagrant 
+
+:: permanently add c:\cygwin\bin to system PATH
+for /F "tokens=2* delims= " %%f IN ('reg query "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" /v Path ^| findstr /i path') do set OLD_SYSTEM_PATH=%%g
+reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" /v Path /d "%OLD_SYSTEM_PATH%;%CYGWIN_HOME%\bin" /f
 
 PATH=%PATH%;%CYGWIN_HOME%\bin
 
@@ -53,3 +61,9 @@ for /D %%i in (%TEMP%\http*.*) do del /s /q "%%~i"
 
 echo ==^> Fixing corrupt recycle bin - see http://www.winhelponline.com/blog/fix-corrupted-recycle-bin-windows-7-vista/
 rd /s /q %SystemDrive%\$Recycle.bin
+
+goto :EOF
+
+:addCygwinBinToSystemPath
+set PATH=%PATH%;%UserProfile%\bin
+exit /b
