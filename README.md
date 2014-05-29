@@ -1,9 +1,36 @@
 # Packer templates for Windows
+[![Build Status](https://box-cutter.ci.cloudbees.com/buildStatus/icon?job=windows-core-nocm)](https://box-cutter.ci.cloudbees.com/job/windows-core-nocm)
 
 ### Overview
 
-The repository contains templates for Windows that can create Vagrant boxes
-using Packer ([Website](packer.io)) ([Github](http://github.com/mitchellh/packer))
+This repository contains templates for Windows that can create
+Vagrant boxes using Packer.
+
+## Current Boxes
+
+64-bit boxes:
+
+* win8x64-enterprise, VMware 3.6GB/VirtualBox 3.3GB
+* win8x64-enterprise-cygwin, VMWare 3.5GB/VirtualBox 3.3GB
+* win8x64-pro, VMWare 3.6GB/VirtualBox 3.4GB
+* win8x64-pro-cygwin, VMWare 3.6GB/VirtualBox 3.4GB
+* win7x64-enterprise, VMWare 3.5GB/VirtualBox 3.2GB
+* win7x64-enterprise-cygwin, VMWare 3.5GB/VirtualBox 3.3GB
+* win7x64-pro, VMware 3.5GB/VirtualBox 3.2GB
+* win7x64-pro-cygwin, VMware 3.5GB/VirtualBox 3.3GB
+
+
+32-bit boxes:
+
+* win8x86-enterprise, VMware 2.6GB/VirtualBox 2.4GB
+* win8x86-enterprise-cygwin, VMware 2.6GB/VirtualBox  2.4GB
+* win8x86-pro, VMware 2.6GB/VirtualBox 2.4GB
+* win8x86-pro-cygwin, VMware 2.6GB/VirtualBox 2.4GB
+* win7x86-enterprise, VMWare 2.5GB/VirtualBox 2.4GB
+* win7x86-enterprise-cygwin, VMWare 2.5GB/VirtualBox 2.4GB
+* win7x86-pro, VMware 2.5GB/VirtualBox 2.4GB
+* win7x86-pro-cygwin, VMware 2.6GB/VirtualBox 2.4GB
+ 
 
 ## Building the Vagrant boxes
 
@@ -79,4 +106,11 @@ For Windows, the ISO path variables are:
 * `WIN81_X64_PRO`
 
 You can also override these setting, such as with
-`WIN81_X64_PRO := file:///Volumes/MSDN/en_windows_8.1_professional_vl_with_update_x64_dvd_4065194.iso`
+`WIN81_X64_PRO := file:///Volumes/MSDN/en_windows_8.1_professional_vl_with_update_x64_dvd_4065194.iso
+
+### Acknowledgments
+
+[CloudBees](http://www.cloudbees.com) is providing a hosted [Jenkins master](http://box-cutter.ci.cloudbees.com/) through their CloudBees FOSS program. Their [On-Premise Executor](https://developer.cloudbees.com/bin/view/DEV/On-Premise+Executors) feature is used to connect physical machines as build slaves running VirtualBox, VMware Fusion, VMware Workstation, VMware ESXi/vSphere and Hyper-V.
+
+![Powered By CloudBees](http://www.cloudbees.com/sites/default/files/Button-Powered-by-CB.png "Powered By CloudBees")![Built On DEV@Cloud](http://www.cloudbees.com/sites/default/files/Button-Built-on-CB-1.png "Built On DEV@Cloud")
+
